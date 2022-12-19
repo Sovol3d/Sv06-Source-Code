@@ -15,11 +15,11 @@ PEI Plate, 25 point Auto Leveling, 32bit Silent Mainboard, Dual Z axis, and Belt
 
 - User Manual. [Click here](https://drive.google.com/drive/folders/10uJUe-J0IutQSNI4IS-Tbwym4Ch8Yw6x)
 
-# Learn more
+# Learn more& How to Buy it
 
 on Sovol Official Website: https://sovol3d.com/products/sovol-sv06-direct-drive-3d-printer
 
-# Source code
+# Notice
 
 This is the official source code for Sovol SV06. The damage caused by modifying firmware also using the third party firmware will lose the 1 year warranty. If you need support, it’s recommended to reflash the stock firmware before contacting sovol.
 
