@@ -1554,8 +1554,8 @@
  */
 #define PREHEAT_BEFORE_LEVELING
 #if ENABLED(PREHEAT_BEFORE_LEVELING)
- // #define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
- //#define LEVELING_BED_TEMP     60
+ #define LEVELING_NOZZLE_TEMP 120   // (°C) Only applies to E0 at this time
+ #define LEVELING_BED_TEMP     60
 #endif
 
 /**

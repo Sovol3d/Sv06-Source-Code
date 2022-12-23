@@ -228,6 +228,7 @@ void do_level_hint(){
    LCD_MESSAGEPGM(MSG_LEVEL_STATE);
 }
 void lcd_G29() {
+  #if ENABLED(PREHEAT_BEFORE_LEVELING)
   const celsius_t hotendPreheat = (LEVELING_NOZZLE_TEMP-2) > thermalManager.degTargetHotend(0) ? LEVELING_NOZZLE_TEMP : 0;
   const celsius_t bedPreheat = (LEVELING_BED_TEMP-2) > thermalManager.degTargetBed() ? LEVELING_BED_TEMP : 0;
   if (hotendPreheat || bedPreheat) {
@@ -243,14 +244,23 @@ void lcd_G29() {
     queue.inject_P(all_axes_trusted() ? PSTR("G29") : PSTR("G29N")); 
     ui.return_to_status();
   }
-}
+  #else
+    queue.inject_P(all_axes_trusted() ? PSTR("G29") : PSTR("G29N")); 
+    ui.return_to_status();
 
+  #endif
+  }
+
+#if ENABLED(PREHEAT_BEFORE_LEVELING)
 void do_home_hint(){
   thermalManager.setTargetHotend(LEVELING_NOZZLE_TEMP, 0);
   thermalManager.setTargetBed(LEVELING_BED_TEMP);
   ui.return_to_status();
-}
+ }
+#endif
+
 void lcd_G28(){
+  #if ENABLED(PREHEAT_BEFORE_LEVELING)
   const celsius_t hotendPreheat = (LEVELING_NOZZLE_TEMP-2) > thermalManager.temp_hotend[0].celsius ? LEVELING_NOZZLE_TEMP : 0;
   const celsius_t bedPreheat = (LEVELING_BED_TEMP-2) > thermalManager.temp_bed.celsius ? LEVELING_BED_TEMP : 0;
   if (hotendPreheat || bedPreheat) {
@@ -267,8 +277,15 @@ void lcd_G28(){
     thermalManager.setTargetBed(LEVELING_BED_TEMP);
     queue.inject_P(PSTR("G28\nG1 F240 Z0")); 
     ui.return_to_status();
-  }
+    }
+  
+#else
+    queue.inject_P(PSTR("G28\nG1 F240 Z0")); 
+    ui.return_to_status();
+
+#endif
 }
+
 
 /**
  * Step 1: Bed Level entry-point
