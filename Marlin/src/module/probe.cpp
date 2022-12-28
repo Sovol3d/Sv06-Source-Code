@@ -370,10 +370,6 @@ FORCE_INLINE void probe_specific_action(const bool deploy) {
         DEBUG_ECHOPGM("hotend (", hotendPreheat, ")");
         thermalManager.setTargetHotend(hotendPreheat, 0);
       }
-      else if(hotendPreheat==0 && IS_SD_PRINTING()==0)
-      {
-         thermalManager.setTargetHotend(LEVELING_NOZZLE_TEMP, 0);
-      }
     #elif ENABLED(WAIT_FOR_BED_HEAT)
       constexpr celsius_t hotendPreheat = 0;
     #endif
@@ -384,10 +380,6 @@ FORCE_INLINE void probe_specific_action(const bool deploy) {
         if (hotendPreheat) DEBUG_ECHOPGM(" and ");
         DEBUG_ECHOPGM("bed (", bedPreheat, ")");
         thermalManager.setTargetBed(bedPreheat);
-      }
-      else if(bedPreheat == 0 && IS_SD_PRINTING()==0)
-      {
-        thermalManager.setTargetBed(LEVELING_BED_TEMP);
       }
     #endif
 
