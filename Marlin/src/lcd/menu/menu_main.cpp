@@ -80,6 +80,10 @@ void menu_configuration();
   void menu_bed_leveling();
 #endif
 
+#if ENABLED(AUTO_BED_LEVELING_UBL)
+  void _lcd_ubl_level_bed();
+#endif
+
 #if HAS_POWER_MONITOR
   void menu_power_monitor();
 #endif

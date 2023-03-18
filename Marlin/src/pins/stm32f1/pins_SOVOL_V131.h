@@ -79,7 +79,7 @@
 // Filament Runout Sensor
 //
 #ifndef FIL_RUNOUT_PIN
-  #define CHECKFILEMENT0_PIN                    PA4   // "Pulled-high"
+  #define FIL_RUNOUT_PIN                    PA4   // "Pulled-high"
 #endif
 
 //
