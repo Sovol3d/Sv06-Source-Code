@@ -28,6 +28,7 @@
 #include "../../module/planner.h"
 #include "../../module/motion.h"
 #include "../../module/printcounter.h"
+#include "../../module/settings.h"
 #include "../../gcode/queue.h"
 
 #if HAS_BUZZER
@@ -308,7 +309,7 @@ void scroll_screen(const uint8_t limit, const bool is_menu) {
   #include "../../feature/babystep.h"
 
   void lcd_babystep_zoffset() {
-    if (ui.use_click()) return ui.goto_previous_screen_no_defer();
+    if (ui.use_click()) { settings.save(); return ui.goto_previous_screen_no_defer();}
     ui.defer_status_screen();
     const bool do_probe = DISABLED(BABYSTEP_HOTEND_Z_OFFSET) || active_extruder == 0;
     if (ui.encoderPosition) {
