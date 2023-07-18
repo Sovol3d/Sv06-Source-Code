@@ -184,7 +184,7 @@ def apply_features_config():
 			cur_srcs = re.findall(r'[+-](<.*?>)', build_src_filter)
 			for d in my_srcs:
 				if d in cur_srcs:
-						build_src_filter = re.sub(r'[+-]' + d, '', build_src_filter)
+					build_src_filter = re.sub(r'[+-]' + d, '', build_src_filter)
 
 			build_src_filter = feat['build_src_filter'] + ' ' + build_src_filter
 			set_env_field('build_src_filter', [build_src_filter])
