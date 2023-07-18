@@ -190,6 +190,11 @@ def apply_features_config():
 			set_env_field('build_src_filter', [build_src_filter])
 			env.Replace(SRC_FILTER=build_src_filter)
 
+		if 'lib_ignore' in feat:
+			blab("========== Adding lib_ignore for %s... " % feature, 2)
+			lib_ignore = env.GetProjectOption('lib_ignore') + [feat['lib_ignore']]
+			set_env_field('lib_ignore', lib_ignore)
+
 #
 # Find a compiler, considering the OS
 #
